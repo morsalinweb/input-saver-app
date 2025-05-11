@@ -1,10 +1,10 @@
 // lib/mongodb.js
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://username:YIiCBhflzyr3a5dT@cluster.mongodb.net/input-saver?retryWrites=true&w=majority"
+const URI = process.env.MONGODB_URI || "mongodb+srv://username:YIiCBhflzyr3a5dT@cluster.mongodb.net/input-saver?retryWrites=true&w=majority"
 
-if (!MONGODB_URI) {
-  throw new Error("Please define the MONGODB_URI environment variable");
+if (!URI) {
+  throw new Error("Please define the URI environment variable");
 }
 
 let cached = global.mongoose;
@@ -17,7 +17,7 @@ async function dbConnect() {
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
+    cached.promise = mongoose.connect(URI, {
       bufferCommands: false,
     }).then((mongoose) => mongoose);
   }
