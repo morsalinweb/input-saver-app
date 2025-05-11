@@ -1,7 +1,7 @@
 // lib/mongodb.js
 import mongoose from 'mongoose';
 
-const URI = process.env.MONGODB_URI || "mongodb+srv://username:YIiCBhflzyr3a5dT@cluster.mongodb.net/input-saver?retryWrites=true&w=majority"
+const URI = process.env.MONGODB_URI
 
 if (!URI) {
   throw new Error("Please define the URI environment variable");
